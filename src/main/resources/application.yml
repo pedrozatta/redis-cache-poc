@@ -1,5 +1,5 @@
 server:
-  port: ${LINCE_PERSON_PORT:8081}
+  port: ${PORT:8080}
 
 spring:
   data:
