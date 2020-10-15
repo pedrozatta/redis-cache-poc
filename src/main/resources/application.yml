@@ -1,0 +1,41 @@
+server:
+  port: ${LINCE_PERSON_PORT:8081}
+
+spring:
+  data:
+    redis:
+      repositories:
+        enabled: true
+
+  application:
+    name: @project.artifactId@
+
+  profiles:
+    include: management
+
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: America/Sao_Paulo
+
+  datasource:
+    url: ${LINCE_PERSON_DATASOURCE_URL:jdbc:h2:mem:lince-db}
+    username: ${LINCE_PERSON_DATASOURCE_USER:linceuser}
+    password: ${LINCE_PERSON_DATASOURCE_PASS:lincepass}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: ${LINCE_PERSON_DATASOURCE_DIALECT:org.hibernate.dialect.H2Dialect}
+
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+
+logging:
+  level:
+    work:
+      lince: ${LINCE_LOG_LEVEL:INFO}
